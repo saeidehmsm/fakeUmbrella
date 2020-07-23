@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fake-umbrella-cfb29": {
+      "hosting": {
+        "FakedUmbrella": [
+          "fake-umbrella-cfb29"
+        ]
+      }
+    }
+  }
+}

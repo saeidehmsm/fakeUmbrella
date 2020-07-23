@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    (click)="onToggleSidenav()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div fxFlex fxLayout fxLayoutAlign="start" fxHide.xs>
+    <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+      <li>
+        <fa-icon [icon]="faCloudSunRain"></fa-icon>
+      </li>
+      <li>
+        <a routerLink="/customerList">Customers</a>
+      </li>
+      <li>
+        <a routerLink="/customerForcaste5">Rainy Days</a>
+      </li>
+      <li>
+        <a routerLink="/customerBarchart">Chart</a>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>

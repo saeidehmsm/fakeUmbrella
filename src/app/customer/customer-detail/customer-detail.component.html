@@ -1,0 +1,98 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="500px" fxFlex.xs="100%">
+    <mat-card-title>{{
+      isCreateMode ? "Create a new customer" : "Edit customer"
+    }}</mat-card-title>
+    <form
+      [formGroup]="customerForm"
+      autocomplete="off"
+      novalidate
+      (ngSubmit)="onSave(customerForm.value)"
+      fxLayout="column wrap"
+      fxLayoutAlign="center center"
+      fxLayoutGap="10px"
+    >
+      <mat-card-content>
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            placeholder="name"
+            formControlName="name"
+            id="name"
+          />
+          <mat-error *ngIf="hasError('name', 'required')"
+            >Name is required</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            placeholder="contactPerson"
+            formControlName="contactPerson"
+            id="contactPerson"
+          />
+          <mat-error *ngIf="hasError('contactPerson', 'required')"
+            >ContactPerson is required</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            placeholder="phone"
+            formControlName="phone"
+            id="phone"
+          />
+          <mat-error *ngIf="hasError('phone', 'required')"
+            >phone is required</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Cities</mat-label>
+          <mat-select formControlName="city">
+            <mat-option
+              *ngFor="let city of cities$ | async as cities"
+              [value]="city.id"
+            >
+              {{ city.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            placeholder="employeeCount"
+            formControlName="employeeCount"
+            id="employeeCount"
+          />
+          <mat-error *ngIf="hasError('employeeCount', 'required')"
+            >employeeCount is required</mat-error
+          >
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="!customerForm.valid"
+        >
+          Save
+        </button>
+        <button
+          type="button"
+          mat-raised-button
+          color="warn"
+          (click)="onCancel()"
+        >
+          Cancel
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</section>
